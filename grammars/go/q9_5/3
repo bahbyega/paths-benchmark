@@ -1,0 +1,1 @@
+(subClassOf | annotatedTarget | hasExactSynonym | hasOBONamespace | type)+

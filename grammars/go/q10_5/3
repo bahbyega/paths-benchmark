@@ -1,0 +1,1 @@
+(subClassOf | id | label | type | hasDbXref) hasExactSynonym*

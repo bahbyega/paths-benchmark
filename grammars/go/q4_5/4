@@ -1,0 +1,1 @@
+(subClassOf | annotatedProperty | hasDbXref | id | hasExactSynonym)*

@@ -1,0 +1,1 @@
+(subClassOf | annotatedTarget | hasOBONamespace | hasExactSynonym) label*

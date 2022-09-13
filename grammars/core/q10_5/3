@@ -1,0 +1,1 @@
+(type | rest | label | comment | first) domain*
