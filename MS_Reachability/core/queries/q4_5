@@ -1,1 +1,1 @@
-(first | subClassOf | type | domain | range)*
+(first | subClassOf | type | domain | isDefinedBy)*
