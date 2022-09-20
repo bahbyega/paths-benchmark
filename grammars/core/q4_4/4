@@ -1,1 +1,0 @@
-(isDefinedBy | first | comment | label)*

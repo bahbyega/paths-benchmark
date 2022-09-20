@@ -1,1 +1,0 @@
-(annotatedSource | hasExactSynonym | label | hasOBONamespace) type*
