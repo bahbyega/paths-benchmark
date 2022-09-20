@@ -1,1 +1,1 @@
-(broaderTransitive | altLabel | label | subClassOf)*
+(broaderTransitive | altLabel | type | subClassOf)*
