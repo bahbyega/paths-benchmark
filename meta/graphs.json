@@ -1,0 +1,46 @@
+{
+    "data": [
+        {
+            "source": "core.txt",
+            "num_nodes": "1323",
+            "num_edges": "2752",
+            "num_labels": "31",
+            "type": "txt"
+        },
+        {
+            "source": "enzyme.txt",
+            "num_nodes": "48815",
+            "num_edges": "86543",
+            "num_labels": "14",
+            "type": "txt"
+        },
+        {
+            "source": "eclass.txt",
+            "num_nodes": "239111",
+            "num_edges": "360248",
+            "num_labels": "10",
+            "type": "txt"
+        },
+        {
+            "source": "go.txt",
+            "num_nodes": "582929",
+            "num_edges": "1437437",
+            "num_labels": "47",
+            "type": "txt"
+        },
+        {
+            "source": "advogato.txt",
+            "num_nodes": "6541",
+            "num_edges": "51127",
+            "num_labels": "3",
+            "type": "txt"
+        },
+        {
+            "source": "youtube.txt",
+            "num_nodes": "15088",
+            "num_edges": "27257790",
+            "num_labels": "5",
+            "type": "txt"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+import pathlib
+
+ROOT = pathlib.Path(__file__).parent.parent
+DATA = ROOT / "data"
+META = ROOT / "meta"
+GRAPHS = DATA / "Graphs"
+QUERIES = DATA / "Queries"
+QUERIES_REGEX = QUERIES / "regex"
+QUERIES_GRAMMAR = QUERIES / "grammar"
+
+
+DEFAULT_NUM_ITERATIONS = 10
+DEFAULT_SOURCE_VERTEX = 0
+DEFAULT_LABELS_COUNT = 7
+DEFAULT_NUM_Q_FOR_EACH_TEMPLATE = 5
