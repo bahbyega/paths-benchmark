@@ -1,1 +1,0 @@
-(annotatedSource | id | subClassOf | annotatedTarget | type) hasDbXref*

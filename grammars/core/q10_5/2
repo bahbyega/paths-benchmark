@@ -1,1 +1,0 @@
-(rest | subClassOf | comment | first | domain) isDefinedBy*
