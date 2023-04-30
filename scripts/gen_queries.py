@@ -1,4 +1,4 @@
-import numpy, sys, os, shutil
+import numpy, os, shutil
 
 templates = [
     (1, "%s*", "q1"),
@@ -36,7 +36,7 @@ def gen(tpl, n, lst, k):
     res = set()
     i = 0
     while len(res) < n:
-        ie += 1
+        i += 1
         perm = numpy.random.permutation(lst)
         res.add(((tpl % tuple(perm[0:k])), tuple(perm[0:k])))
         if i > 100:
@@ -71,7 +71,9 @@ def write_qs(qs, root_dir, form):
                 if form == "regex":
                     out.write(q[0] + "\n")
                 elif form == "grammar":
-                    out.write("S -> " + q[0] + "\n")
+                    # out.write('S\n')
+                    # out.write(' '.join(q[1]) + '\n')
+                    out.write('S -> ' + q[0] + '\n')
                 else:
                     print(f"Error: invalid form:{form}")
                 i = i + 1
