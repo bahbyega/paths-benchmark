@@ -41,6 +41,20 @@
             "num_edges": "27257790",
             "num_labels": "5",
             "type": "txt"
+        },
+        {
+            "source": "geospecies.txt",
+            "num_nodes": "450609",
+            "num_edges": "2201532",
+            "num_labels": "158",
+            "type": "txt"
+        },
+        {
+            "source": "taxonomy.txt",
+            "num_nodes": "5728398",
+            "num_edges": "14922125",
+            "num_labels": "21",
+            "type": "txt"
         }
     ]
 }

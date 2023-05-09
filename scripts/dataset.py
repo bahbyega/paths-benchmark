@@ -1,6 +1,6 @@
 import json
 
-import rpqbenchmark.scripts.config as cfg
+import config as cfg
 
 GRAPHS_JSON = json.loads((cfg.META / "graphs.json").read_text())["data"]
 
@@ -21,6 +21,8 @@ GRAPH_NAME_eclass = "eclass"
 GRAPH_NAME_go = "go"
 GRAPH_NAME_advogato = "advogato"
 GRAPH_NAME_youtube = "youtube"
+GRAPH_NAME_geospecies = "geospecies"
+GRAPH_NAME_taxonomy = "taxonomy"
 
 ALL_GRAPHS = [
     GRAPH_NAME_core,
@@ -28,7 +30,9 @@ ALL_GRAPHS = [
     GRAPH_NAME_eclass,
     GRAPH_NAME_go,
     GRAPH_NAME_advogato,
-    GRAPH_NAME_youtube
+    GRAPH_NAME_youtube,
+    GRAPH_NAME_geospecies,
+    GRAPH_NAME_taxonomy
 ]
 
 GRAPH_core = PropertyGraph(GRAPH_NAME_core)
@@ -37,6 +41,8 @@ GRAPH_eclass = PropertyGraph(GRAPH_NAME_eclass)
 GRAPH_go = PropertyGraph(GRAPH_NAME_go)
 GRAPH_advogato = PropertyGraph(GRAPH_NAME_advogato)
 GRAPH_youtube = PropertyGraph(GRAPH_NAME_youtube)
+GRAPH_geospecies = PropertyGraph(GRAPH_NAME_geospecies)
+GRAPH_taxonomy = PropertyGraph(GRAPH_NAME_taxonomy)
 
 BENCH_GRAPHS = [
     GRAPH_core,
@@ -44,21 +50,26 @@ BENCH_GRAPHS = [
     GRAPH_eclass,
     GRAPH_go,
     GRAPH_advogato,
-    GRAPH_youtube
+    GRAPH_youtube,
+    GRAPH_geospecies,
+    GRAPH_taxonomy
 ]
 
 query_templates = [
     "q1",
     "q2",
     "q3",
+
     "q4_2",
     "q4_3",
     "q4_4",
     "q4_5",
+    
     "q5",
     "q6",
     "q7",
     "q8",
+    
     "q9_2",
     "q9_3",
     "q9_4",
@@ -67,10 +78,12 @@ query_templates = [
     "q10_3",
     "q10_4",
     "q10_5",
+    
     "q11_2",
     "q11_3",
     "q11_4",
     "q11_5",
+    
     "q12",
     "q13",
     "q14",
