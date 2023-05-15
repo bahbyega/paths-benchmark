@@ -1,36 +1,9 @@
 import numpy, os, shutil
 
-templates = [
-    (1, "%s*", "q1"),
-    (2, "%s %s*", "q2"),
-    (3, "%s %s* %s*", "q3"),
-    (2, "(%s | %s)*", "q4_2"),
-    (3, "(%s | %s | %s)*", "q4_3"),
-    (4, "(%s | %s | %s | %s)*", "q4_4"),
-    (5, "(%s | %s | %s | %s | %s)*", "q4_5"),
-    (3, "%s %s* %s", "q5"),
-    (2, "%s* %s*", "q6"),
-    (3, "%s %s %s*", "q7"),
-    (2, "%s? %s*", "q8"),
-    (2, "(%s | %s)+", "q9_2"),
-    (3, "(%s | %s | %s)+", "q9_3"),
-    (4, "(%s | %s | %s | %s)+", "q9_4"),
-    (5, "(%s | %s | %s | %s | %s)+", "q9_5"),
-    (3, "(%s | %s) %s*", "q10_2"),
-    (4, "(%s | %s | %s) %s*", "q10_3"),
-    (5, "(%s | %s | %s | %s) %s*", "q10_4"),
-    (6, "(%s | %s | %s | %s | %s) %s*", "q10_5"),
-    (2, "%s %s", "q11_2"),
-    (3, "%s %s %s", "q11_3"),
-    (4, "%s %s %s %s", "q11_4"),
-    (5, "%s %s %s %s %s", "q11_5"),
-    (4, "((%s %s)+) | (%s %s)+", "q12"),
-    (5, "((%s (%s %s)*)+) | (%s %s)+", "q13"),
-    (6, "((%s %s (%s %s)*)+) | (%s | %s)*", "q14"),
-    (4, "(%s | %s)+ (%s | %s)+", "q15"),
-    (5, "%s %s (%s | %s | %s)", "q16"),
-]
+from pyformlang.regular_expression import Regex
 
+from dataset import query_regex as templates
+from gen_datalog import generate_datalog_program
 
 def gen(tpl, n, lst, k):
     res = set()
@@ -71,9 +44,14 @@ def write_qs(qs, root_dir, form):
                 if form == "regex":
                     out.write(q[0] + "\n")
                 elif form == "grammar":
-                    # out.write('S\n')
-                    # out.write(' '.join(q[1]) + '\n')
-                    out.write('S -> ' + q[0] + '\n')
+                    out.write(Regex(q[0])
+                            .to_cfg()
+                            .remove_epsilon()
+                            .remove_useless_symbols()
+                            .eliminate_unit_productions()
+                            .to_normal_form())
+                elif form == "datalog":
+                    out.write(generate_datalog_program(q[0], "edge", "path"))
                 else:
                     print(f"Error: invalid form:{form}")
                 i = i + 1
