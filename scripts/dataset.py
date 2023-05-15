@@ -89,12 +89,17 @@ query_regex = [
 
 query_templates = [x[2] for x in query_regex]
 
-BENCH_QUERIES_PATHS = [cfg.QUERIES_REGEX/ graph.id / q_tpl / str(q_num) \
+BENCH_QUERIES_PATHS_REGEX = [cfg.QUERIES_REGEX/ graph.id / q_tpl / str(q_num) \
                  for graph in BENCH_GRAPHS \
                  for q_tpl in query_templates \
                  for q_num in range(cfg.DEFAULT_NUM_Q_FOR_EACH_TEMPLATE)]
 
 BENCH_QUERIES_PATHS_GRAMMAR = [cfg.QUERIES_GRAMMAR/ graph.id / q_tpl / str(q_num) \
+                 for graph in BENCH_GRAPHS \
+                 for q_tpl in query_templates \
+                 for q_num in range(cfg.DEFAULT_NUM_Q_FOR_EACH_TEMPLATE)]
+
+BENCH_QUERIES_PATHS_DATALOG = [cfg.QUERIES_DATALOG/ graph.id / q_tpl / str(q_num) \
                  for graph in BENCH_GRAPHS \
                  for q_tpl in query_templates \
                  for q_num in range(cfg.DEFAULT_NUM_Q_FOR_EACH_TEMPLATE)]
