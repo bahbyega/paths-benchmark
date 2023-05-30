@@ -20,11 +20,10 @@ def gen(tpl, n, lst, k):
 def gen_from_config(config, num_of_labels, num_of_queries):
     lbls = [
         l.split(" ")[0].rstrip() for l in open(config, "r").readlines()
-    ]  # [0] if labels, [1] if label nums
-    # print(lbls)
+    ]
     enough_lbls = num_of_labels - len(lbls)
     if enough_lbls > 0:
-        for i in range(enough_lbls):
+        for _ in range(enough_lbls):
             lbls.append(lbls[0])
     return [
         (tpl[2], gen(tpl[1], num_of_queries, lbls[0:num_of_labels], tpl[0]))
