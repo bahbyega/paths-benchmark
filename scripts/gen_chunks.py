@@ -8,7 +8,7 @@ from typing import List, Union
 import networkx as nx
 
 
-def select_number_source_verts(graph, n: int, seed: Union[int, None] = None) -> List:
+def select_number_source_verts(num_nodes, n: int, seed: Union[int, None] = None) -> List:
     """Return a list of random source vertices in the amount of n
 
     Parameters
@@ -26,18 +26,16 @@ def select_number_source_verts(graph, n: int, seed: Union[int, None] = None) -> 
     -------
     l : List
         A random list of nodes in a graph.
-    """
-    num_nodes = graph.matrices_size
-    
+    """    
     if n > num_nodes:
-        n = graph.matrices_size
+        n = num_nodes
         # raise ValueError(f"{n} exceeds the number of nodes in a graph ({num_nodes})")
     
     random.seed(seed)
 
-    return random.sample([x for x in range(graph.matrices_size)], n)
+    return random.sample([x for x in range(num_nodes)], n)
     
-def select_percent_source_verts(graph, p: int, seed: Union[int, None] = None) -> List:
+def select_percent_source_verts(num_nodes, p: int, seed: Union[int, None] = None) -> List:
     """Return a list of random source vertices in the amount of percent p
 
     Parameters
@@ -56,9 +54,7 @@ def select_percent_source_verts(graph, p: int, seed: Union[int, None] = None) ->
     l : List
         A random list of nodes in a graph.
     """
-    num_nodes = graph.number_of_nodes()
-
-    return select_number_source_verts(graph, int(num_nodes * p / 100.0), seed)
+    return select_number_source_verts(num_nodes, int(num_nodes * p / 100.0), seed)
 
 def generate_single_source(
     graph

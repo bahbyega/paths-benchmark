@@ -48,7 +48,8 @@ def write_qs(qs, root_dir, form):
                             .remove_epsilon()
                             .remove_useless_symbols()
                             .eliminate_unit_productions()
-                            .to_normal_form())
+                            .to_normal_form()
+                            .to_text())
                 elif form == "datalog":
                     out.write(generate_datalog_program(q[0], "edge", "path"))
                 else:
@@ -56,11 +57,9 @@ def write_qs(qs, root_dir, form):
                 i = i + 1
 
 
-def gen_qs(path_to_config, num_labels, count, path_to_qs, form, seed):
+def gen_qs(path_to_config, num_labels, count, path_to_qs, form, seed=None):
     numpy.random.seed(seed)
 
-    # print("Generating queries")
-    # print(path_to_config, num_labels,int(count))
     r = gen_from_config(path_to_config, num_labels, count)
 
     write_qs(r, path_to_qs, form)

@@ -1,13 +1,17 @@
 import json
 
-import config as cfg
+import scripts.config as cfg
+
+from deps.CFPQ_PyAlgo.src.problems.MultipleSource.algo.matrix_bfs_ms.matrix_bfs_ms import MatrixBFSMSAlgo
+from deps.CFPQ_PyAlgo.src.problems.MultipleSource.algo.matrix_bfs_ms.matrix_bfs_ms import MatrixBFSMSPairsAlgo
+from deps.CFPQ_PyAlgo.src.problems.MultipleSource.algo.tensor_ms.tensor_ms import TensorMSAlgo
 
 GRAPHS_JSON = json.loads((cfg.META / "graphs.json").read_text())["data"]
 
 class PropertyGraph:
-    def __init__(self, id) -> None:
-        self.json = next(filter(lambda d: d["source"] == f"{id}.txt", GRAPHS_JSON))
-        self.id = id
+    def __init__(self, name) -> None:
+        self.json = next(filter(lambda d: d["source"] == f"{name}.txt", GRAPHS_JSON))
+        self.name = name
         self.source = self.json["source"]
         self.num_nodes = int(self.json["num_nodes"])
         self.num_edges = int(self.json["num_edges"])
@@ -89,17 +93,30 @@ query_regex = [
 
 query_templates = [x[2] for x in query_regex]
 
-BENCH_QUERIES_PATHS_REGEX = [cfg.QUERIES_REGEX/ graph.id / q_tpl / str(q_num) \
+BENCH_QUERIES_PATHS_REGEX = [cfg.QUERIES_REGEX/ graph.name / q_tpl / str(q_num) \
                  for graph in BENCH_GRAPHS \
                  for q_tpl in query_templates \
                  for q_num in range(cfg.DEFAULT_NUM_Q_FOR_EACH_TEMPLATE)]
 
-BENCH_QUERIES_PATHS_GRAMMAR = [cfg.QUERIES_GRAMMAR/ graph.id / q_tpl / str(q_num) \
+BENCH_QUERIES_PATHS_GRAMMAR = [cfg.QUERIES_GRAMMAR/ graph.name / q_tpl / str(q_num) \
                  for graph in BENCH_GRAPHS \
                  for q_tpl in query_templates \
                  for q_num in range(cfg.DEFAULT_NUM_Q_FOR_EACH_TEMPLATE)]
 
-BENCH_QUERIES_PATHS_DATALOG = [cfg.QUERIES_DATALOG/ graph.id / q_tpl / str(q_num) \
+BENCH_QUERIES_PATHS_DATALOG = [cfg.QUERIES_DATALOG/ graph.name / q_tpl / str(q_num) \
                  for graph in BENCH_GRAPHS \
                  for q_tpl in query_templates \
                  for q_num in range(cfg.DEFAULT_NUM_Q_FOR_EACH_TEMPLATE)]
+
+# dummy class for datalog since we use an external tool
+class DatalogAlgo:
+    pass
+
+ALGORITHMS = {
+    "msbfs": MatrixBFSMSAlgo,
+    "msbfspairs": MatrixBFSMSPairsAlgo,
+    "tensor": TensorMSAlgo,
+    "datalog": DatalogAlgo
+}
+
+ALGO_NAMES = ALGORITHMS.keys()
