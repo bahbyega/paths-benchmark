@@ -37,21 +37,21 @@ git sumbodule --init --recursive
 
 ## How to install tools for comparison
 #### Tensor
-Tensor algorithm is a part of CFPQ_PyAlgo algorithms collection and will run without additional configuration after you performed previous [installation](#installation) successfully.
+Tensor algorithm is a part of CFPQ_PyAlgo algorithms collection and will run without additional configuration after you have performed previous [installation](#installation) step successfully.
 
 #### Souffle
 Follow [this page](https://souffle-lang.github.io/install) for `Soufflé` installation.
 
 ## How to download and prepare dataset
 1. Download dataset containing all the graphs and extract it into [`data/Graphs`](./data/Graphs) folder. Note that `data/Graphs/txt` now contains all the graphs.
-2. Run [`scripts/initialize.py`](./scripts/convert.py) to prepare graphs and generate queries.
+2. Run [`scripts/initialize.py`](./scripts/initialize.py) to prepare graphs and generate queries.
 ```
 python3 scripts/initialize.py
 ```
 
 ## How to run benchmark
 
-1. Run [`benchmark/run_benchmark.py`](./scripts/convert.py) to run specific benchmark.
+1. Run [`benchmark/run_benchmark.py`](./benchmark/run_benchmark.py) to run specific benchmark.
 ```
 python3 benchmark/run_benchmark.py [--algo] [--data] [--result] [--scenario]
 ```
