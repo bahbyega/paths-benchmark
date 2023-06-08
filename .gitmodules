@@ -1,0 +1,3 @@
+[submodule "deps/cfpq_pyalgo"]
+    path = deps/cfpq_pyalgo
+    url = https://github.com/bahbyega/CFPQ_PyAlgo.git
